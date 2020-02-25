@@ -14,28 +14,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    app.getUserOpenid = res => {
+      wx.request({
+        url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+        data:{
+          openid:app.globalData.openid
+        },
+        method:"GET",
+        success(res){
+          that.setData({
+            personMsg:res.data
+          })
+        }
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var page = this;
-    app.getUserOpenid = res => {
-      console.log('查看得到的数据:', res)
-    }
-    wx.request({
-      url: 'http://localhost:8080/CollegeLife_war_exploded/login',
-      data:{
-        openid:app.globalData.openid
-      },
-      method:"GET",
-      success(res){
-        page.data.personMsg = res.data
-        console.log(res);
-      }
-    })
     
   },
 
@@ -82,5 +81,6 @@ Page({
   },
   onClick:function(){
     console.log(app.globalData.openid);
+    console.log(this.data.personMsg);
   }
 })

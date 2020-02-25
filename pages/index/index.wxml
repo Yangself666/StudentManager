@@ -1,5 +1,5 @@
 <!--pages/index/index.wxml-->
 <view>
-<view>{{personMsg}}</view>
+<view>{{personMsg.sName}}</view>
 <button bindtap="onClick">测试openid是否获取</button>
 </view>

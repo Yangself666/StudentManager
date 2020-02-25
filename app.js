@@ -8,25 +8,23 @@ App({
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
+    var that = this
     wx.login({
       success: (res) => {
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session',
           data:{
-            appid:app.globalData.appid,
-            secret:app.globalData.secret,
+            appid:that.globalData.appid,
+            secret:that.globalData.secret,
             js_code:res.code,
             grant_type:"authorization_code"
           },
           method:"GET",
           success(res){
-            app.globalData.openid = res.data.openid
-            console.log("成功")
-            console.log("aaa")
-            if (this.getUserOpenid ){
-              this.getUserOpenid(res)
+            that.globalData.openid = res.data.openid
+            if (that.getUserOpenid){
+              that.getUserOpenid(res)
             }
-            console.log("aaa")
           }
         })
       },
