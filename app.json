@@ -1,13 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/signin/signin"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#ec5c5d",
+    "navigationBarTitleText": "行在学园",
+    "navigationBarTextStyle": "white"
+  },
+  "permission":{
+    "scope.userLocation": {
+      "desc": "将要获取你的位置信息用于学生管理"
+    }
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

@@ -6,8 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogined:null,
-    personMsg:null
+    isLogined:false,
+    personMsg:null,
+    longitude:null,
+    latitude:null
   },
 
   /**
@@ -15,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    // 通过openid查询数据库
     app.getUserOpenid = res => {
       wx.request({
         url: 'http://localhost:8080/CollegeLife_war_exploded/login',
@@ -23,12 +26,28 @@ Page({
         },
         method:"GET",
         success(res){
-          that.setData({
-            personMsg:res.data
-          })
+          if(that.getPersonMsg){
+            that.getPersonMsg(res);
+          }
         }
       })
     }
+    this.getPersonMsg = res =>{
+      that.setData({
+        personMsg:res.data,
+        isLogined:true
+      })
+    }
+    // 获取用户位置信息
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        that.setData({
+          latitude : res.latitude,
+          longitude : res.longitude
+        })
+      }
+     })
   },
 
   /**
