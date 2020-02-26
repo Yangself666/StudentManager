@@ -166,27 +166,56 @@ Page({
   formSubmit: function () {
     var that = this;
     var data = this.data;
-    wx.request({
-      url: 'http://localhost:8080/CollegeLife_war_exploded/signin',
-      data:{
-        openid: app.globalData.openid,
-        sName: data.sName,
-        sNumber: data.sNumber,
-        classIndex0: data.classIndex[0],
-        classIndex1: data.classIndex[1]
-      },
-      method:"GET",
-      success(res){
-        if(that.getCallback(res)){
-          that.getCallback(res);
+    if(!data.sName || !data.sNumber){
+      wx.showToast({
+        title: '姓名和学号不能为空！',
+        icon: 'none',
+        duration: 2000
+      })
+    }else{
+      wx.request({
+        url: 'http://localhost:8080/CollegeLife_war_exploded/signin',
+        data:{
+          openid: app.globalData.openid,
+          sName: data.sName,
+          sNumber: data.sNumber,
+          classIndex0: data.classIndex[0],
+          classIndex1: data.classIndex[1]
+        },
+        method:"GET",
+        success(res){
+          if(that.getCallback){
+            that.getCallback(res);
+          }
+        },
+        fail(res){
+          wx.showToast({
+            title: '服务器连接失败！',
+            icon: 'none',
+            duration: 5000
+          })
         }
-      }
-    })
-    this.getCallback = res =>{
-      if(!res.data){
-        console.log("服务器错误！")
-      }else{
-        console.log(res.data);
+      })
+      this.getCallback = res =>{
+        if(!res.data){
+          wx.showToast({
+            title: '服务器错误！',
+            icon: 'none',
+            duration: 2000
+          })
+        }else{
+          console.log(res)
+          wx.showToast({
+            title: res.data,
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(function() {
+            wx.reLaunch({
+              url: '/pages/index/index'
+            })
+          }, 2000);
+        }
       }
     }
   }

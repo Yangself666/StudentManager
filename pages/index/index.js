@@ -6,18 +6,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogined:false,
-    personMsg:null,
     longitude:null,
-    latitude:null
+    latitude:null,
+    isLogined:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("onLoad")
     var that = this;
-    // 通过openid查询数据库
+    wx.request({
+      url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+      data:{
+        openid:app.globalData.openid
+      },
+      method:"GET",
+      success(res){
+        if(that.getPersonMsg){
+          that.getPersonMsg(res);
+        }
+      },
+      fail(res){
+        wx.showToast({
+          title: '服务器连接失败！',
+          icon: 'none',
+          duration: 5000
+        })
+      }
+    })
     app.getUserOpenid = res => {
       wx.request({
         url: 'http://localhost:8080/CollegeLife_war_exploded/login',
@@ -26,18 +44,30 @@ Page({
         },
         method:"GET",
         success(res){
-          if(that.getPersonMsg(res)){
+          if(that.getPersonMsg){
             that.getPersonMsg(res);
           }
+        },
+        fail(res){
+          wx.showToast({
+            title: '服务器连接失败！',
+            icon: 'none',
+            duration: 5000
+          })
         }
       })
     }
     this.getPersonMsg = res =>{
-      console.log(res)
-      that.setData({
-        personMsg:res.data,
-        isLogined:true
-      })
+      if(!res.data){
+        console.log("是空的，没有登录")
+      }else{
+        app.globalData.personMsg = res.data
+        app.globalData.isLogined = true
+        this.setData({
+          isLogined:app.globalData.isLogined
+        })
+      }
+      console.log(res.data)
     }
     // 获取用户位置信息
     wx.getLocation({
