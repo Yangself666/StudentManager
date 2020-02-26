@@ -1,5 +1,35 @@
 /* pages/index/index.wxss */
+.signin{
+  display: flex;
+  padding: 30rpx;
+  flex-direction: column;
+  justify-content: center;
+}
+.notice_title{
+  margin: 30rpx;
+  font-size: 26px;
+  border-bottom: 3px solid #fa8c8e;
+}
 
+.notice_content{
+  padding: 20rpx 60rpx;
+  font-size: large;
+  line-height: 30px;
+  color: #888888;
+}
+.cut_off{
+  background-color: #fa8c8e;
+  margin: 10rpx auto;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+}
+.bottom{
+  padding: 1px 0px;
+  margin: 0 30rpx;
+  margin-bottom:30rpx ;
+  border-bottom:1px solid #fa8c8e;
+}
 
 .noSignin_content{
   padding: 30rpx 0;

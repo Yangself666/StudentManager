@@ -18,6 +18,7 @@
   margin: 50rpx;
 }
 .userMsg_username{
+  margin-bottom: 20rpx;
   font-size: x-large;
   font-weight: 700;
 }

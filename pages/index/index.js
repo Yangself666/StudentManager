@@ -8,7 +8,8 @@ Page({
   data: {
     longitude: null,
     latitude: null,
-    isLogined: false
+    isLogined: false,
+    personMsg:null
   },
 
   /**
@@ -39,6 +40,7 @@ Page({
           if (that.getPersonMsg) {
             that.getPersonMsg(res);
           }
+          console.log(res)
         },
         fail(res) {
           wx.showToast({
@@ -56,7 +58,8 @@ Page({
         app.globalData.personMsg = res.data
         app.globalData.isLogined = true
         this.setData({
-          isLogined: app.globalData.isLogined
+          isLogined: app.globalData.isLogined,
+          personMsg: res.data
         })
       }
 
@@ -82,10 +85,7 @@ Page({
           }
         })
       }
-
     }
-
-
   },
 
   /**
