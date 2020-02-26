@@ -1,0 +1,33 @@
+<view class="app">
+	<!-- 用户信息 -->
+	<view class="userMsg">
+		<!-- 用户头像 -->
+		<image src="/images/logo/logo.png" class="userMsg_userImg"></image>
+		<!-- 用户名 -->
+		<view class="userMsg_username">
+			{{personMsg.sName}}
+		</view>
+		<!-- 用户手机号 -->
+		<view class="userMsg_userTel">
+			{{personMsg.sNumber}}
+		</view>
+    <!-- 学院班级 -->
+		<view class="userMsg_userTel">
+			{{personMsg.coName}}-{{personMsg.cName}}
+		</view>
+	</view>
+
+	<!-- 菜单选项 -->
+	<view class="menu_list">去评分
+		<image class="arrows" src="{{arrow_right}}"></image>
+	</view>
+	<view class="menu_list">功能介绍
+		<image class="arrows" src="{{arrow_right}}"></image>
+	</view>
+	<view class="menu_list">投诉
+		<image class="arrows" src="{{arrow_right}}"></image>
+	</view>
+	<view class="menu_list">版本更新
+		<image class="arrows" src="{{arrow_right}}"></image>
+	</view>
+</view>

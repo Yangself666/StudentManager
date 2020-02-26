@@ -4,7 +4,8 @@ App({
     appid:"wxb4af88d61d8255aa",
     secret:"a4c3744b257b5b68403c37ab142cda42",
     isLogined:false,
-    personMsg:null
+    personMsg:null,
+    cid:0
   },
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
