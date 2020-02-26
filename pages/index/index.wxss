@@ -1,1 +1,10 @@
 /* pages/index/index.wxss */
+
+
+.noSignin_content{
+  padding: 30rpx 0;
+  text-align: center;
+}
+.noSignin {
+  padding: 350rpx 0;
+}

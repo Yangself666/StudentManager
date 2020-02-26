@@ -26,13 +26,14 @@ Page({
         },
         method:"GET",
         success(res){
-          if(that.getPersonMsg){
+          if(that.getPersonMsg(res)){
             that.getPersonMsg(res);
           }
         }
       })
     }
     this.getPersonMsg = res =>{
+      console.log(res)
       that.setData({
         personMsg:res.data,
         isLogined:true
@@ -98,8 +99,9 @@ Page({
   onShareAppMessage: function () {
     
   },
-  onClick:function(){
-    console.log(app.globalData.openid);
-    console.log(this.data.personMsg);
+  toSignin:function(){
+    wx.navigateTo({
+      url: '/pages/signin/signin'
+    })
   }
 })

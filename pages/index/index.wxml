@@ -1,22 +1,28 @@
 <!--pages/index/index.wxml-->
-<view>
-<!-- 这里是上边的标题位 -->
+<view class="all">
+	<!-- 这里是上边的标题位 -->
 	<view class="top">
-    <text class="top_title">行在学园</text>
+		<text class="top_title">行在学园</text>
 	</view>
-  <!-- 如果在数据库中查到有对应的注册信息，就显示如下的信息 -->
-  <view wx:if="{{isLogined}}" class="signin">
   
-  </view>
-  <!-- 否则就要求点击登录 -->
-  <view wx:wlse>
+	<!-- 如果在数据库中查到有对应的注册信息，就显示如下的信息 -->
+	<view wx:if="{{isLogined}}">
+		<view class="signin">
+		<view>您已经登录成功！</view>
+		</view>
+	</view>
+	<!-- 否则就要求点击登录 -->
+	<view wx:else>
+		<view class="noSignin">
+			<view class="noSignin_content">您还没有注册，请点击按钮注册使用！</view>
+			<button type="primary" bindtap="toSignin">注册使用</button>
+		</view>
+	</view>
 
-  </view>
- 
- 
- 
- 
-  <!-- 
+
+
+
+	<!-- 
   <view>{{latitude}}</view>
   <view>{{longitude}}</view>
    -->

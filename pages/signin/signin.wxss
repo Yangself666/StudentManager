@@ -1,1 +1,28 @@
 /* pages/signin/signin.wxss */
+.signinForm{
+  display: flex;
+  justify-content: center;
+}
+
+.inputBox{
+  width: 500rpx;
+  height: 100rpx;
+  margin: 50rpx 0;
+  text-align: center;
+  border-bottom: 2px solid #fa8c8e;
+}
+.input-placeholder{
+  color: #dbdbdb;
+}
+.picker_item{
+  margin: 20rpx 0;
+  text-align: center;
+  font-size: large;
+}
+.picker{
+  margin-top: 50rpx;
+  color: #aaaaaa;
+}
+.submitButton{
+  margin-top: 140rpx ;
+}
