@@ -7,17 +7,17 @@
 		<form bindsubmit="formSubmit">
 			<input class="inputBox" name="sName" bindblur="typeName" placeholder-class="input-placeholder" placeholder="姓名" value="{{personMsg.sName}}" />
 			<input class="inputBox" type="number" bindblur="typeNumber" name="sNumber" placeholder-class="input-placeholder" placeholder="学号" value="{{personMsg.sNumber}}" />
-      <view class="picker_item">请选择您的专业与班级</view>
+			<view class="picker_item">请选择您的专业与班级</view>
 			<picker class="picker" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
 				<view class="picker_item">
 					{{multiArray[0][multiIndex[0]]}}
-        </view>
-        <view class="picker_item">
-        {{multiArray[1][multiIndex[1]]}}
-        </view>
-				
+				</view>
+				<view class="picker_item">
+					{{multiArray[1][multiIndex[1]]}}
+				</view>
+
 			</picker>
-	<button class="submitButton" type="primary" formType="submit">提交</button>
-	</form>
-</view> 
+			<button class="submitButton" type="primary" formType="submit">提交</button>
+		</form>
+	</view>
 </view>

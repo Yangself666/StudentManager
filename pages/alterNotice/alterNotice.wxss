@@ -1,1 +1,23 @@
 /* pages/alterNotice/alterNotice.wxss */
+.textForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.alterContent_title{
+  width: 70%;
+  margin: 50rpx auto;
+  font-size: 24px;
+}
+.inputArea{
+  width: 80%;
+  border: 2px solid #fa8c8e;
+  border-radius: 10px;
+  margin: 30rpx auto;
+  padding: 40rpx;
+  text-align: left;
+}
+.submitButton{
+  margin-top: 200rpx;
+}

@@ -1,2 +1,6 @@
-<!--pages/location/location.wxml-->
-<text>pages/location/location.wxml</text>
+<view class="all">
+	<!-- 这里是上边的标题位 -->
+	<view class="top">
+		<text class="top_title">行在学园</text>
+	</view>
+</view>

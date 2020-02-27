@@ -1,2 +1,21 @@
-<!--pages/alterNotice/alterNotice.wxml-->
-<text>pages/alterNotice/alterNotice.wxml</text>
+<view class="all">
+	<!-- 这里是上边的标题位 -->
+	<view class="top">
+		<text class="top_title">行在学园</text>
+	</view>
+
+	<view class="textForm">
+		<form bindsubmit="formSubmit">
+
+			<view class="alterContent_title">
+				<text wx:if="{{level == 1}}">请输入{{cName}}的公告内容</text>
+				<text wx:if="{{level == 2}}">请输入{{coName}}的公告内容</text>
+			</view>
+			<textarea class="inputArea" maxlength="500" placeholder="请输入公告内容" bindblur="typeNotice" value="{{content}}"></textarea>
+
+			<button class="submitButton" type="primary" formType="submit">提交</button>
+
+		</form>
+	</view>
+
+</view>

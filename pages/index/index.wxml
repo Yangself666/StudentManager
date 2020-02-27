@@ -10,14 +10,14 @@
 		<view class="signin">
 			<view class="coNotice">
 				<view class="notice_title">学院公告</view>
-				<view class="notice_content">这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告{{personMsg.coNotice}}</view>
+				<view class="notice_content">{{personMsg.coNotice}}</view>
 				<view class="bottom">
 					<view class="cut_off"></view>
 				</view>
 			</view>
 			<view class="cNotice">
 				<view class="notice_title">班级公告</view>
-				<view class="notice_content">这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告这里是公告{{personMsg.cNotice}}</view>
+				<view class="notice_content">{{personMsg.cNotice}}</view>
 				<view class="bottom">
 					<view class="cut_off"></view>
 				</view>

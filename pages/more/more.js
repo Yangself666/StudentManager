@@ -83,9 +83,6 @@ Page({
 				})
 			}
 		})
-		
-
-
 	},
 	alterNotice: function () {
 		var that = this

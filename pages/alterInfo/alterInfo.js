@@ -83,7 +83,6 @@ Page({
 				sNumber: res.personMsg.sNumber
 			})
 		})
-
 	},
 
 	/**
@@ -174,8 +173,6 @@ Page({
 		});
 	},
 	formSubmit: function () {
-		const eventChannel = this.getOpenerEventChannel()
-		var that = this;
 		var data = this.data;
 		if (!data.sName || !data.sNumber) {
 			wx.showToast({

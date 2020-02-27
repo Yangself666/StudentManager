@@ -25,7 +25,7 @@
 			<image class="arrows" src="{{arrow_right}}"></image>
 		</view>
 		<view wx:if="{{personMsg.level>0}}">
-		<view class="menu_list" bindtap="alterNotice">更改公告
+		<view class="menu_list" bindtap="alterNotice"><text wx:if="{{personMsg.level == 1}}">更改班级公告</text><text wx:if="{{personMsg.level == 2}}">更改学院公告</text>
 			<image class="arrows" src="{{arrow_right}}"></image>
 		</view>
 		<view class="menu_list" bindtap="location">查看学生位置
