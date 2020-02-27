@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/signin/signin",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/alterInfo/alterInfo",
+    "pages/alterLevel/alterLevel",
+    "pages/alterNotice/alterNotice",
+    "pages/location/location"
   ],
   "window": {
     "backgroundTextStyle": "light",

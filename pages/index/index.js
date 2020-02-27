@@ -2,189 +2,193 @@ const app = getApp();
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    longitude: null,
-    latitude: null,
-    isLogined: false,
-    personMsg:null
-  },
+	/**
+	 * 页面的初始数据
+	 */
+	data: {
+		personMsg: null
+	},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log("onLoad")
-    var that = this;
-    // 获取用户位置信息
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        that.setData({
-          latitude: res.latitude,
-          longitude: res.longitude
-        })
-      }
-    })
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad: function (options) {
+		console.log("index-onLoad")
 
-    app.getUserOpenid = res => {
-      wx.request({
-        url: 'http://localhost:8080/CollegeLife_war_exploded/login',
-        data: {
-          openid: app.globalData.openid
-        },
-        method: "GET",
-        success(res) {
-          if (that.getPersonMsg) {
-            that.getPersonMsg(res);
-          }
-          console.log(res)
-        },
-        fail(res) {
-          wx.showToast({
-            title: '服务器连接失败！',
-            icon: 'none',
-            duration: 5000
-          })
-        }
-      })
-    }
-    this.getPersonMsg = res => {
-      if (!res.data) {
-        console.log("是空的，没有登录")
-      } else {
-        app.globalData.personMsg = res.data
-        app.globalData.isLogined = true
-        this.setData({
-          isLogined: app.globalData.isLogined,
-          personMsg: res.data
-        })
-      }
+		var that = this;
+		this.setData({
+			personMsg: app.globalData.personMsg
+		})
 
-      if (this.data.isLogined) {
-        wx.request({
-          url: 'http://localhost:8080/CollegeLife_war_exploded/location',
-          method: "GET",
-          data: {
-            sid: app.globalData.personMsg.sid,
-            longitude: this.data.longitude,
-            latitude: this.data.latitude
-          },
-          success(res) {
-            console.log("位置信息上传成功！")
-            console.log("经度为：" + that.data.longitude + "纬度为：" + that.data.latitude)
-          },
-          fail(res) {
-            wx.showToast({
-              title: '服务器连接失败！无法上传位置信息！',
-              icon: 'none',
-              duration: 5000
-            })
-          }
-        })
-      }
-    }
-  },
+		app.sendPersonMsg = res => { //接收到的个人信息放到index页面中
+			console.log("执行了：" + res.data)
+			this.setData({
+				personMsg: res.data
+			})
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+			wx.getLocation({
+				type: 'wgs84',
+				success(res) {
+					if (that.data.personMsg) {
+						wx.request({
+							url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+							method: "GET",
+							data: {
+								sid: that.data.personMsg.sid,
+								longitude: res.longitude,
+								latitude: res.latitude
+							},
+							success(res) {
+								console.log("回调位置信息上传成功！")
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！无法上传位置信息！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
+						})
+					}
+				}
+			})
+		}
 
-  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that = this;
-    var data = this.data
-    if (this.data.isLogined) {
-      wx.request({
-        url: 'http://localhost:8080/CollegeLife_war_exploded/location',
-        method: "GET",
-        data: {
-          sid: app.globalData.personMsg.sid,
-          longitude: this.data.longitude,
-          latitude: this.data.latitude
-        },
-        success(res) {
-          console.log("位置信息上传成功！")
-          console.log("经度为：" + that.data.longitude + "纬度为：" + that.data.latitude)
-        },
-        fail(res) {
-          wx.showToast({
-            title: '服务器连接失败！无法上传位置信息！',
-            icon: 'none',
-            duration: 5000
-          })
-        }
-      })
-    }
-  },
+		// 获取用户位置信息
+		wx.getLocation({
+			type: 'wgs84',
+			success(res) {
+				if (that.data.personMsg) {
+					wx.request({
+						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						method: "GET",
+						data: {
+							sid: that.data.personMsg.sid,
+							longitude: res.longitude,
+							latitude: res.latitude
+						},
+						success(res) {
+							console.log("非call位置信息上传成功！")
+						},
+						fail(res) {
+							wx.showToast({
+								title: '服务器连接失败！无法上传位置信息！',
+								icon: 'none',
+								duration: 5000
+							})
+						}
+					})
+				}
+			}
+		})
+	},
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    var that = this;
-    var data = this.data
-    if (this.data.isLogined) {
-      wx.request({
-        url: 'http://localhost:8080/CollegeLife_war_exploded/location',
-        method: "GET",
-        data: {
-          sid: app.globalData.personMsg.sid,
-          longitude: this.data.longitude,
-          latitude: this.data.latitude
-        },
-        success(res) {
-          console.log("位置信息上传成功！")
-          console.log("经度为：" + that.data.longitude + "纬度为：" + that.data.latitude)
-        },
-        fail(res) {
-          wx.showToast({
-            title: '服务器连接失败！无法上传位置信息！',
-            icon: 'none',
-            duration: 5000
-          })
-        }
-      })
-    }
-  },
+	/**
+	 * 生命周期函数--监听页面初次渲染完成
+	 */
+	onReady: function () {
+		
+	},
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	onShow: function () {
+		var that = this;
 
-  },
+		wx.getLocation({
+			type: 'wgs84',
+			success(res) {
+				if (that.data.personMsg) {
+					wx.request({
+						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						method: "GET",
+						data: {
+							sid: that.data.personMsg.sid,
+							longitude: res.longitude,
+							latitude: res.latitude
+						},
+						success(res) {
+							console.log("onShow位置信息上传成功！")
+						},
+						fail(res) {
+							wx.showToast({
+								title: '服务器连接失败！无法上传位置信息！',
+								icon: 'none',
+								duration: 5000
+							})
+						}
+					})
+				}
+			}
+		})
+	},
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+	/**
+	 * 生命周期函数--监听页面隐藏
+	 */
+	onHide: function () {
+		var that = this;
 
-  },
+		wx.getLocation({
+			type: 'wgs84',
+			success(res) {
+				if (that.data.personMsg) {
+					wx.request({
+						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						method: "GET",
+						data: {
+							sid: that.data.personMsg.sid,
+							longitude: res.longitude,
+							latitude: res.latitude
+						},
+						success(res) {
+							console.log("onHide位置信息上传成功！")
+						},
+						fail(res) {
+							wx.showToast({
+								title: '服务器连接失败！无法上传位置信息！',
+								icon: 'none',
+								duration: 5000
+							})
+						}
+					})
+				}
+			}
+		})
+	},
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload: function () {
 
-  },
+	},
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+	/**
+	 * 页面相关事件处理函数--监听用户下拉动作
+	 */
+	onPullDownRefresh: function () {
 
-  },
-  toSignin: function () {
-    wx.navigateTo({
-      url: '/pages/signin/signin'
-    })
-  }
+	},
+
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
+	onReachBottom: function () {
+
+	},
+
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function () {
+
+	},
+	toSignin: function () {
+		wx.navigateTo({
+			url: '/pages/signin/signin'
+		})
+	}
 })
