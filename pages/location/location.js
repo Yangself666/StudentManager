@@ -45,7 +45,6 @@ Page({
 						},
 						method: "GET",
 						success(res) {
-							console.log(res.data)
 							var markersArray = [];
 							for (let index = 0; index < res.data.length; index++) {
 								markersArray.push(
@@ -58,17 +57,19 @@ Page({
 										height: 30,
 										callout: {
 											content: res.data[index].sName+"\n"+res.data[index].sNumber+"\n"+res.data[index].cName,
-											color: '#000000', //文本颜色
-											borderRadius: 15, //边框圆角
-											borderWidth: 1, //边框宽度
-											borderColor: '#ec5c5d', //边框颜色
-											bgColor: '#ffffff', //背景色
-											padding: 5, //文本边缘留白
-											textAlign: 'center' //文本对齐方式。有效值: left, right, center
+											color: '#000000',
+											borderRadius: 15,
+											borderWidth: 1,
+											borderColor: '#ec5c5d',
+											bgColor: '#ffffff',
+											padding: 5,
+											textAlign: 'center'
 										}
 									}
 								)
 							}
+							console.log("数组为")
+							console.log(markersArray)
 							that.setData({
 								markers: markersArray
 							})
