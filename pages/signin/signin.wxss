@@ -21,7 +21,7 @@
 }
 .picker{
   margin-top: 50rpx;
-  color: #aaaaaa;
+  color: #7e7e7e;
 }
 .submitButton{
   margin-top: 140rpx ;

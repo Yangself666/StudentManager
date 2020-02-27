@@ -30,7 +30,9 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		this.setData({
+			personMsg: app.globalData.personMsg
+		})
 	},
 
 	/**
@@ -60,32 +62,52 @@ Page({
 	onReachBottom: function () {
 
 	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	},
 	alterInfo: function () {
 		var that = this
 		wx.navigateTo({
-			url: 'url',
+			url: '/pages/alterInfo/alterInfo',
 			success: function (res) {
-				res.eventChannel.emit('userLevel', {
-					data: that.data.personMsg
+				res.eventChannel.emit('userMsg', {
+					personMsg: that.data.personMsg
 				})
 			}
 		})
 	},
 	alterLevel: function () {
+		var that = this
 		wx.navigateTo({
-			url: 'url',
+			url: '/pages/alterLevel/alterLevel',
 			success: function (res) {
-				res.eventChannel.emit('userLevel', {
-					data: that.data.personMsg
+				res.eventChannel.emit('userMsg', {
+					personMsg: that.data.personMsg
+				})
+			}
+		})
+		
+
+
+	},
+	alterNotice: function () {
+		var that = this
+		wx.navigateTo({
+			url: '/pages/alterNotice/alterNotice',
+			success: function (res) {
+				res.eventChannel.emit('userMsg', {
+					personMsg: that.data.personMsg
+				})
+			}
+		})
+	},
+	location: function () {
+		var that = this
+		wx.navigateTo({
+			url: '/pages/location/location',
+			success: function (res) {
+				res.eventChannel.emit('userMsg', {
+					personMsg: that.data.personMsg
 				})
 			}
 		})
 	}
+
 })

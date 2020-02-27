@@ -17,12 +17,12 @@
   border-radius: 50%;
   margin: 50rpx;
 }
-.userMsg_username{
+.userMsg_sName{
   margin-bottom: 20rpx;
   font-size: x-large;
   font-weight: 700;
 }
-.userMsg_userTel{
+.userMsg_sNumber{
   font-size: 14px;
   color: #666666;
 }

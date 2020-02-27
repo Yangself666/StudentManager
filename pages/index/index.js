@@ -96,7 +96,9 @@ Page({
 	 */
 	onShow: function () {
 		var that = this;
-
+		this.setData({
+			personMsg: app.globalData.personMsg
+		})
 		wx.getLocation({
 			type: 'wgs84',
 			success(res) {

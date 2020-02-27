@@ -1,18 +1,18 @@
 <view class="app">
 	<!-- 用户信息 -->
 	<view class="userMsg">
-		<!-- 用户头像 -->
+		<!-- 学校logo -->
 		<image src="/images/logo/logo.png" class="userMsg_userImg"></image>
-		<!-- 用户名 -->
-		<view class="userMsg_username">
+		<!-- 学生姓名 -->
+		<view class="userMsg_sName">
 			{{personMsg.sName}}
 		</view>
-		<!-- 用户手机号 -->
-		<view class="userMsg_userTel">
+		<!-- 学号 -->
+		<view class="userMsg_sNumber">
 			{{personMsg.sNumber}}
 		</view>
 		<!-- 学院班级 -->
-		<view class="userMsg_userTel">
+		<view class="userMsg_sNumber">
 			{{personMsg.coName}}-{{personMsg.cName}}
 		</view>
 	</view>
