@@ -187,8 +187,18 @@ Page({
 
 	},
 	toSignin: function () {
+		var that = this
 		wx.navigateTo({
-			url: '/pages/signin/signin'
+			url: '/pages/signin/signin',
+			events:{
+				signInSeccess: function(data) {
+					console.log(data.personMsg);
+					that.setData({
+						personMsg :data.personMsg
+					})
+					app.globalData.personMsg = data.personMsg
+				}
+			}
 		})
 	}
 })
