@@ -31,7 +31,7 @@ Page({
 				success(res) {
 					if (that.data.personMsg) {
 						wx.request({
-							url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+							url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
 							method: "GET",
 							data: {
 								sid: that.data.personMsg.sid,
@@ -61,7 +61,7 @@ Page({
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,
@@ -104,7 +104,7 @@ Page({
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,
@@ -138,7 +138,7 @@ Page({
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'http://localhost:8080/CollegeLife_war_exploded/location',
+						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,

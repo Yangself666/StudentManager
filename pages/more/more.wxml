@@ -21,11 +21,11 @@
 	<view class="menu_list" bindtap="alterInfo" wx:if="{{personMsg.level>=0}}">修改个人信息
 		<image class="arrows" src="{{arrow_right}}"></image>
 	</view>
-		<view class="menu_list" bindtap="alterLevel" wx:if="{{personMsg.level>=0}}">提升管理权限
-			<image class="arrows" src="{{arrow_right}}"></image>
-		</view>
-		<view wx:if="{{personMsg.level>0}}">
-		<view class="menu_list" bindtap="alterNotice"><text wx:if="{{personMsg.level == 1}}">更改班级公告</text><text wx:if="{{personMsg.level == 2}}">更改学院公告</text>
+	<view class="menu_list" bindtap="alterLevel" wx:if="{{personMsg.level>=0}}">提升管理权限
+		<image class="arrows" src="{{arrow_right}}"></image>
+	</view>
+	<view wx:if="{{personMsg.level>0}}">
+		<view class="menu_list" bindtap="alterNotice" wx:if="{{personMsg.level>0 && personMsg.level <3 }}"><text wx:if="{{personMsg.level == 1}}">更改班级公告</text><text wx:if="{{personMsg.level == 2}}">更改学院公告</text>
 			<image class="arrows" src="{{arrow_right}}"></image>
 		</view>
 		<view class="menu_list" bindtap="location">查看学生位置

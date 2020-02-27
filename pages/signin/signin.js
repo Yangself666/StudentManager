@@ -174,7 +174,7 @@ Page({
 			})
 		} else {
 			wx.request({
-				url: 'http://localhost:8080/CollegeLife_war_exploded/signin',
+				url: 'https://xiaoyu995.xyz:8443/collegeLife/signin',
 				data: {
 					openid: app.globalData.openid,
 					sName: data.sName,
@@ -201,7 +201,7 @@ Page({
 
 						
 						wx.request({//获取数据库中个人信息
-							url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+							url: 'https://xiaoyu995.xyz:8443/collegeLife/login',
 							data: {
 								openid: app.globalData.openid
 							},

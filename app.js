@@ -26,7 +26,7 @@ App({
 						success(res) {//res中的data.openid是获取到的openid，为了保证是在获取后执行登录，使用回调
 							that.globalData.openid = res.data.openid
 							wx.request({//获取数据库中个人信息
-								url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+								url: 'https://xiaoyu995.xyz:8443/collegeLife/login',
 								data: {
 									openid: res.data.openid
 								},

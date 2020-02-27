@@ -108,7 +108,7 @@ Page({
 		var that = this
 		if(this.data.level == 1){
 			wx.request({
-				url: 'http://localhost:8080/CollegeLife_war_exploded/member',
+				url: 'https://xiaoyu995.xyz:8443/collegeLife/member',
 				data: {
 					openid: this.data.personMsg.openid
 				},
@@ -182,7 +182,7 @@ Page({
 
 		if(this.data.level == 2){
 			wx.request({
-				url: 'http://localhost:8080/CollegeLife_war_exploded/member',
+				url: 'https://xiaoyu995.xyz:8443/collegeLife/member',
 				data: {
 					openid: this.data.personMsg.openid
 				},
@@ -197,7 +197,7 @@ Page({
 						})
 					} else {
 						wx.request({
-						  url: 'http://localhost:8080/CollegeLife_war_exploded/college',
+						  url: 'https://xiaoyu995.xyz:8443/collegeLife/college',
 						  data:{
 							  coid: 1,
 							  coNotice: that.data.coNotice
@@ -219,7 +219,7 @@ Page({
 						  }
 						})
 						wx.request({ //获取数据库中个人信息
-							url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+							url: 'https://xiaoyu995.xyz:8443/collegeLife/login',
 							data: {
 								openid: app.globalData.openid
 							},
