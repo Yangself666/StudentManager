@@ -57,7 +57,7 @@ Page({
 										width: 30,
 										height: 30,
 										callout: {
-											content: 'res.data.index.sName\nres.data.index.sNumber\nres.data.index.cName', //文本
+											content: res.data[index].sName+"\n"+res.data[index].sNumber+"\n"+res.data[index].cName,
 											color: '#000000', //文本颜色
 											borderRadius: 15, //边框圆角
 											borderWidth: 1, //边框宽度
