@@ -174,7 +174,7 @@ Page({
 			})
 		} else {
 			wx.request({
-				url: 'https://xiaoyu995.xyz:8443/collegeLife/signin',
+				url: 'https://yangself.cn/collegeLife/signin',
 				data: {
 					openid: app.globalData.openid,
 					sName: data.sName,
@@ -201,7 +201,7 @@ Page({
 
 						
 						wx.request({//获取数据库中个人信息
-							url: 'https://xiaoyu995.xyz:8443/collegeLife/login',
+							url: 'https://yangself.cn/collegeLife/login',
 							data: {
 								openid: app.globalData.openid
 							},

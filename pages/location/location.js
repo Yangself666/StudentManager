@@ -25,7 +25,7 @@ Page({
 		})
 		if(this.data.level == 1){
 			wx.request({
-				url: 'https://xiaoyu995.xyz:8443/collegeLife/member',
+				url: 'https://yangself.cn/collegeLife/member',
 				data: {
 					openid: this.data.personMsg.openid
 				},
@@ -99,7 +99,7 @@ Page({
 
 		if (this.data.level == 2) {
 			wx.request({
-				url: 'http://localhost:8080/CollegeLife_war_exploded/collegeLocation',
+				url: 'https://yangself.cn/collegeLife/collegeLocation',
 				data: {
 					coid: 1,
 				},
@@ -146,7 +146,7 @@ Page({
 
 		if (this.data.level == 3) {
 			wx.request({
-				url: 'https://xiaoyu995.xyz:8443/collegeLife/allLocation',
+				url: 'https://yangself.cn/collegeLife/allLocation',
 				method: "GET",
 				success(res) {
 					var markersArray = [];

@@ -31,7 +31,7 @@ Page({
 				success(res) {
 					if (that.data.personMsg) {
 						wx.request({
-							url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
+							url: 'https://yangself.cn/collegeLife/location',
 							method: "GET",
 							data: {
 								sid: that.data.personMsg.sid,
@@ -61,7 +61,7 @@ Page({
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
+						url: 'https://yangself.cn/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,
@@ -96,15 +96,45 @@ Page({
 	 */
 	onShow: function () {
 		var that = this;
+		wx.request({//获取数据库中个人信息
+			url: 'https://yangself.cn/collegeLife/login',
+			data: {
+				openid: app.globalData.openid
+			},
+			method: "GET",
+			success(res) {//已经获取到个人信息，在res.data中
+				console.log(res)
+				if (!res.data) {//如果没有内容
+					console.log("是空的，没有登录")
+				} else {//如果获取到信息，将个人信息存放到app.globalData中
+					app.globalData.personMsg = res.data
+				}
+
+				if (that.sendPersonMsg) {//将获取到的用户数据通过回调函数发送出去
+					that.sendPersonMsg(res);
+				}	
+			},
+			fail(res) {
+				wx.showToast({
+					title: '服务器连接失败！',
+					icon: 'none',
+					duration: 5000
+				})
+			}
+		})
+		this.sendPersonMsg = res =>{
+			app.globalData.personMsg = res.data
+		}
 		this.setData({
 			personMsg: app.globalData.personMsg
 		})
+
 		wx.getLocation({
 			type: 'wgs84',
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
+						url: 'https://yangself.cn/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,
@@ -138,7 +168,7 @@ Page({
 			success(res) {
 				if (that.data.personMsg) {
 					wx.request({
-						url: 'https://xiaoyu995.xyz:8443/collegeLife/location',
+						url: 'https://yangself.cn/collegeLife/location',
 						method: "GET",
 						data: {
 							sid: that.data.personMsg.sid,

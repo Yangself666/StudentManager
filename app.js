@@ -1,7 +1,5 @@
 App({
 	globalData: {
-		appid: "wxb4af88d61d8255aa",
-		secret: "a4c3744b257b5b68403c37ab142cda42",
 		personMsg: null,
 		openid:null
 	},
@@ -15,18 +13,15 @@ App({
 			wx.login({
 				success: (res) => {
 					wx.request({
-						url: 'https://api.weixin.qq.com/sns/jscode2session',
+						url: 'https://yangself.cn/collegeLife/openid',
 						data: {
-							appid: that.globalData.appid,
-							secret: that.globalData.secret,
-							js_code: res.code,
-							grant_type: "authorization_code"
+							js_code: res.code
 						},
 						method: "GET",
 						success(res) {//res中的data.openid是获取到的openid，为了保证是在获取后执行登录，使用回调
 							that.globalData.openid = res.data.openid
 							wx.request({//获取数据库中个人信息
-								url: 'https://xiaoyu995.xyz:8443/collegeLife/login',
+								url: 'https://yangself.cn/collegeLife/login',
 								data: {
 									openid: res.data.openid
 								},
