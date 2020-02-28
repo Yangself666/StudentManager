@@ -93,47 +93,29 @@ Page({
 
 	},
 	alterInfo: function () {
-		var that = this
+		app.globalData.personMsg = this.data.personMsg
 		wx.navigateTo({
-			url: '/pages/alterInfo/alterInfo',
-			success: function (res) {
-				res.eventChannel.emit('userMsg', {
-					personMsg: that.data.personMsg
-				})
-			}
+			url: '/pages/alterInfo/alterInfo'
 		})
 	},
 	alterLevel: function () {
-		var that = this
+		app.globalData.personMsg = this.data.personMsg
 		wx.navigateTo({
-			url: '/pages/alterLevel/alterLevel',
-			success: function (res) {
-				res.eventChannel.emit('userMsg', {
-					personMsg: that.data.personMsg
-				})
-			}
+			url: '/pages/alterLevel/alterLevel'
 		})
 	},
 	alterNotice: function () {
-		var that = this
+
+		app.globalData.personMsg = this.data.personMsg
 		wx.navigateTo({
 			url: '/pages/alterNotice/alterNotice',
-			success: function (res) {
-				res.eventChannel.emit('userMsg', {
-					personMsg: that.data.personMsg
-				})
-			}
 		})
 	},
 	location: function () {
-		var that = this
+
+		app.globalData.personMsg = this.data.personMsg
 		wx.navigateTo({
-			url: '/pages/location/location',
-			success: function (res) {
-				res.eventChannel.emit('userMsg', {
-					personMsg: that.data.personMsg
-				})
-			}
+			url: '/pages/location/location'
 		})
 	}
 

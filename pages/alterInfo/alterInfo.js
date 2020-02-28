@@ -73,15 +73,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		var that = this
-		const eventChannel = this.getOpenerEventChannel()
-		eventChannel.on('userMsg', function (res) {
-			console.log(res.personMsg)
-			that.setData({
-				personMsg: res.personMsg,
-				sName: res.personMsg.sName,
-				sNumber: res.personMsg.sNumber
-			})
+
+		console.log(app.globalData.personMsg)
+		that.setData({
+			personMsg: app.globalData.personMsg,
+			sName: app.globalData.personMsg.sName,
+			sNumber: app.globalData.personMsg.sNumber
 		})
 	},
 

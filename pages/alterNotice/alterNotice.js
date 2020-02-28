@@ -18,17 +18,14 @@ Page({
 	 */
 	onLoad: function (options) {
 		var that = this
-		const eventChannel = this.getOpenerEventChannel()
-		eventChannel.on('userMsg', function (res) {
-			console.log(res.personMsg)
-			that.setData({
-				personMsg: res.personMsg,
-				level: res.personMsg.level,
-				cName: res.personMsg.cName,
-				coName: res.personMsg.coName,
-				cNotice: res.personMsg.cNotice,
-				coNotice: res.personMsg.coNotice
-			})
+		console.log(app.globalData.personMsg)
+		that.setData({
+			personMsg: app.globalData.personMsg,
+			level: app.globalData.personMsg.level,
+			cName: app.globalData.personMsg.cName,
+			coName: app.globalData.personMsg.coName,
+			cNotice: app.globalData.personMsg.cNotice,
+			coNotice: app.globalData.personMsg.coNotice
 		})
 
 		if (this.data.level == 1) {
@@ -106,7 +103,7 @@ Page({
 	},
 	formSubmit: function () {
 		var that = this
-		if(this.data.level == 1){
+		if (this.data.level == 1) {
 			wx.request({
 				url: 'https://yangself.cn/collegeLife/member',
 				data: {
@@ -123,26 +120,26 @@ Page({
 						})
 					} else {
 						wx.request({
-						  url: 'http://localhost:8080/CollegeLife_war_exploded/class',
-						  data:{
-							  cid: res.data.cid,
-							  cNotice: that.data.cNotice
-						  },
-						  method:"GET",
-						  success(res){
-							wx.showToast({
-								title: '公告修改成功',
-								icon: 'success',
-								duration: 2000
-							})
-						  },
-						  fail(res){
-							wx.showToast({
-								title: '服务器连接失败！',
-								icon: 'none',
-								duration: 5000
-							})
-						  }
+							url: 'http://localhost:8080/CollegeLife_war_exploded/class',
+							data: {
+								cid: res.data.cid,
+								cNotice: that.data.cNotice
+							},
+							method: "GET",
+							success(res) {
+								wx.showToast({
+									title: '公告修改成功',
+									icon: 'success',
+									duration: 2000
+								})
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
 						})
 						wx.request({ //获取数据库中个人信息
 							url: 'http://localhost:8080/CollegeLife_war_exploded/login',
@@ -180,7 +177,7 @@ Page({
 			})
 		}
 
-		if(this.data.level == 2){
+		if (this.data.level == 2) {
 			wx.request({
 				url: 'https://yangself.cn/collegeLife/member',
 				data: {
@@ -197,26 +194,26 @@ Page({
 						})
 					} else {
 						wx.request({
-						  url: 'https://yangself.cn/collegeLife/college',
-						  data:{
-							  coid: 1,
-							  coNotice: that.data.coNotice
-						  },
-						  method:"GET",
-						  success(res){
-							wx.showToast({
-								title: '公告修改成功',
-								icon: 'success',
-								duration: 2000
-							})
-						  },
-						  fail(res){
-							wx.showToast({
-								title: '服务器连接失败！',
-								icon: 'none',
-								duration: 5000
-							})
-						  }
+							url: 'https://yangself.cn/collegeLife/college',
+							data: {
+								coid: 1,
+								coNotice: that.data.coNotice
+							},
+							method: "GET",
+							success(res) {
+								wx.showToast({
+									title: '公告修改成功',
+									icon: 'success',
+									duration: 2000
+								})
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
 						})
 						wx.request({ //获取数据库中个人信息
 							url: 'https://yangself.cn/collegeLife/login',
@@ -255,7 +252,7 @@ Page({
 
 		}
 
-		
+
 
 	}
 

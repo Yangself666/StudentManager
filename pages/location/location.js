@@ -1,4 +1,5 @@
 // pages/location/location.js
+const app = getApp();
 Page({
 
 	/**
@@ -15,15 +16,14 @@ Page({
 	 */
 	onLoad: function (options) {
 		var that = this
-		const eventChannel = this.getOpenerEventChannel()
-		eventChannel.on('userMsg', function (res) {
-			console.log(res.personMsg)
-			that.setData({
-				personMsg: res.personMsg,
-				level: res.personMsg.level
-			})
+
+
+		this.setData({
+			personMsg: app.globalData.personMsg,
+			level: app.globalData.personMsg.level
 		})
-		if(this.data.level == 1){
+		console.log(app.globalData.personMsg)
+		if (this.data.level == 1) {
 			wx.request({
 				url: 'https://yangself.cn/collegeLife/member',
 				data: {
@@ -40,34 +40,35 @@ Page({
 						})
 					} else {
 						wx.request({
-							url: 'http://localhost:8080/CollegeLife_war_exploded/classLocation',
+							url: 'http://yangself.cn/collegeLife/classLocation',
 							data: {
 								cid: res.data.cid,
 							},
 							method: "GET",
 							success(res) {
 								var markersArray = [];
+								console.warn(res)
 								for (let index = 0; index < res.data.length; index++) {
-									markersArray.push(
-										{
-											iconPath: "/images/icon/icon_gps.png",
-											id: index,
-											latitude: res.data[index].latitude,
-											longitude: res.data[index].longitude,
-											width: 30,
-											height: 30,
-											callout: {
-												content: res.data[index].sName+"\n"+res.data[index].sNumber+"\n"+res.data[index].cName,
-												color: '#000000',
-												borderRadius: 15,
-												borderWidth: 1,
-												borderColor: '#ec5c5d',
-												bgColor: '#ffffff',
-												padding: 5,
-												textAlign: 'center'
-											}
+									var font = res.data[index].updateTime.indexOf(".")
+									var time = res.data[index].updateTime.substring(0, font)
+									markersArray.push({
+										iconPath: "/images/icon/icon_gps.png",
+										id: index,
+										latitude: res.data[index].latitude,
+										longitude: res.data[index].longitude,
+										width: 30,
+										height: 30,
+										callout: {
+											content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName + "\n更新时间：" + time,
+											color: '#000000',
+											borderRadius: 15,
+											borderWidth: 1,
+											borderColor: '#ec5c5d',
+											bgColor: '#ffffff',
+											padding: 5,
+											textAlign: 'center'
 										}
-									)
+									})
 								}
 								console.log("数组为")
 								console.log(markersArray)
@@ -94,7 +95,7 @@ Page({
 				}
 			})
 		}
-		
+
 
 
 		if (this.data.level == 2) {
@@ -107,26 +108,26 @@ Page({
 				success(res) {
 					var markersArray = [];
 					for (let index = 0; index < res.data.length; index++) {
-						markersArray.push(
-							{
-								iconPath: "/images/icon/icon_gps.png",
-								id: index,
-								latitude: res.data[index].latitude,
-								longitude: res.data[index].longitude,
-								width: 30,
-								height: 30,
-								callout: {
-									content: res.data[index].sName+"\n"+res.data[index].sNumber+"\n"+res.data[index].cName,
-									color: '#000000',
-									borderRadius: 15,
-									borderWidth: 1,
-									borderColor: '#ec5c5d',
-									bgColor: '#ffffff',
-									padding: 5,
-									textAlign: 'center'
-								}
+						var font = res.data[index].updateTime.indexOf(".")
+						var time = res.data[index].updateTime.substring(0, font)
+						markersArray.push({
+							iconPath: "/images/icon/icon_gps.png",
+							id: index,
+							latitude: res.data[index].latitude,
+							longitude: res.data[index].longitude,
+							width: 30,
+							height: 30,
+							callout: {
+								content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName+ "\n更新时间：" + time,
+								color: '#000000',
+								borderRadius: 15,
+								borderWidth: 1,
+								borderColor: '#ec5c5d',
+								bgColor: '#ffffff',
+								padding: 5,
+								textAlign: 'center'
 							}
-						)
+						})
 					}
 					console.log("数组为")
 					console.log(markersArray)
@@ -151,26 +152,26 @@ Page({
 				success(res) {
 					var markersArray = [];
 					for (let index = 0; index < res.data.length; index++) {
-						markersArray.push(
-							{
-								iconPath: "/images/icon/icon_gps.png",
-								id: index,
-								latitude: res.data[index].latitude,
-								longitude: res.data[index].longitude,
-								width: 30,
-								height: 30,
-								callout: {
-									content: res.data[index].sName+"\n"+res.data[index].sNumber+"\n"+res.data[index].cName,
-									color: '#000000',
-									borderRadius: 15,
-									borderWidth: 1,
-									borderColor: '#ec5c5d',
-									bgColor: '#ffffff',
-									padding: 5,
-									textAlign: 'center'
-								}
+						var font = res.data[index].updateTime.indexOf(".")
+						var time = res.data[index].updateTime.substring(0, font)
+						markersArray.push({
+							iconPath: "/images/icon/icon_gps.png",
+							id: index,
+							latitude: res.data[index].latitude,
+							longitude: res.data[index].longitude,
+							width: 30,
+							height: 30,
+							callout: {
+								content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName + "\n更新时间：" + time,
+								color: '#000000',
+								borderRadius: 15,
+								borderWidth: 1,
+								borderColor: '#ec5c5d',
+								bgColor: '#ffffff',
+								padding: 5,
+								textAlign: 'center'
 							}
-						)
+						})
 					}
 					console.log("数组为")
 					console.log(markersArray)
