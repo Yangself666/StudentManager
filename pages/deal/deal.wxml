@@ -1,0 +1,51 @@
+<view class="all">
+	<!-- 这里是上边的标题位 -->
+	<view class="top">
+		<text class="top_title">行在学园</text>
+	</view>
+
+
+
+	<view wx:if="{{applyList.length == 0}}" class="noApply">
+		没有要处理的数据
+	</view>
+
+	<view wx:else>
+		<view wx:for="{{applyList}}" wx:key="this">
+
+			<view class="applyItem">
+				<view class="content">
+					<view class="info">
+						<view class="name">{{item.sName}}</view>
+						<view class="number">{{item.sNumber}}</view>
+					</view>
+					<view class="levelInfo">
+					<text wx:if="{{item.preLevel == 0}}">学生</text>
+					<text wx:elif="{{item.preLevel == 1}}">班级管理员</text>
+					<text wx:else="{{item.preLevel == 2}}">学院管理员</text>
+					 -> 
+					 <text wx:if="{{item.newLevel == 0}}">学生</text>
+					<text wx:elif="{{item.newLevel == 1}}">班级管理员</text>
+					<text wx:else="{{item.newLevel == 2}}">学院管理员</text>
+					</view>
+				</view>
+				<view class="buttons" wx:if="{{status == 0}}">
+				<button type="primary" bindtap="agree" size="mini" data-value="{{index}}">同意</button>
+				<button type="warn" bindtap="reject" size="mini" data-value="{{index}}">拒绝</button>
+				</view>
+				<view wx:elif="{{status == 1}}">
+					同意了
+				</view>
+
+				<view wx:else>
+					拒绝了
+				</view>
+
+			</view>
+
+		</view>
+
+
+	</view>
+
+</view>

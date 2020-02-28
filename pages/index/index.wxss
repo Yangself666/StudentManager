@@ -20,9 +20,9 @@
 .cut_off{
   background-color: #fa8c8e;
   margin: 10rpx auto;
-  width: 20rpx;
-  height: 20rpx;
-  border-radius: 10rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 7rpx;
 }
 .bottom{
   padding: 1px 0px;

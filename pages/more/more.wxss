@@ -34,7 +34,22 @@
   align-items: center;
   justify-content: space-between;
 }
+.right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .arrows{
   width: 48rpx;
   height: 48rpx;
+}
+.amount{
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: small;
+  color: #fff;
+  background-color: red;
 }

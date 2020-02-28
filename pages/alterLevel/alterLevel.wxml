@@ -4,4 +4,27 @@
 	<view class="top">
 		<text class="top_title">行在学园</text>
 	</view>
+
+	<view class="textForm">
+		<form bindsubmit="formSubmit">
+
+			<view class="title">
+				您当前的账户权限为
+			</view>
+			<view class="levelName">
+				{{lName}}
+			</view>
+			<view class="title2">申请修改为</view>
+			<view class="section">
+				<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+					<view class="picker">
+						{{array[index]}}
+					</view>
+				</picker>
+			</view>
+			<button class="submitButton" type="primary" formType="submit">提交</button>
+
+		</form>
+	</view>
+
 </view>

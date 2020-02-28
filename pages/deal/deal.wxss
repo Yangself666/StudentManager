@@ -1,0 +1,37 @@
+.noApply{
+  margin: 500rpx 0rpx;
+  text-align: center;
+  font-size: x-large;
+  color: #b6b6b6;
+}
+.applyItem{
+  margin: 50rpx 50rpx;
+  border-bottom: 1px solid #fa8c8e;
+}
+.content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.info .name{
+  margin: 10rpx;
+  font-size: larger;
+}
+.info .number{
+  margin: 0 10rpx;
+  color: #7e7e7e;
+}
+
+.levelInfo{
+  margin: 10rpx;
+  font-size: x-large;
+  font-weight: 700;
+  color: #fa8c8e
+}
+.buttons{
+  text-align: right;
+}
+
+.buttons button{
+  margin: 10rpx 20rpx;
+}

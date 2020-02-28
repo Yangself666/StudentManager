@@ -6,7 +6,8 @@
     "pages/alterInfo/alterInfo",
     "pages/alterLevel/alterLevel",
     "pages/alterNotice/alterNotice",
-    "pages/location/location"
+    "pages/location/location",
+    "pages/deal/deal"
   ],
   "window": {
     "backgroundTextStyle": "light",
