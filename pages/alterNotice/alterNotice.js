@@ -120,7 +120,7 @@ Page({
 						})
 					} else {
 						wx.request({
-							url: 'http://localhost:8080/CollegeLife_war_exploded/class',
+							url: 'https://yangself.cn/collegeLife/class',
 							data: {
 								cid: res.data.cid,
 								cNotice: that.data.cNotice
@@ -142,7 +142,7 @@ Page({
 							}
 						})
 						wx.request({ //获取数据库中个人信息
-							url: 'http://localhost:8080/CollegeLife_war_exploded/login',
+							url: 'https://yangself.cn/collegeLife/login',
 							data: {
 								openid: app.globalData.openid
 							},
