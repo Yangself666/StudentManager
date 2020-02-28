@@ -13,7 +13,6 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		wx.stopPullDownRefresh()
 		console.log("index-onLoad")
 
 		var that = this;
@@ -96,6 +95,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
+		wx.stopPullDownRefresh()
 		var that = this;
 		wx.request({//获取数据库中个人信息
 			url: 'https://yangself.cn/collegeLife/login',
@@ -203,7 +203,7 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh: function () {
-		this.onLoad();
+		this.onShow();
 	},
 
 	/**
