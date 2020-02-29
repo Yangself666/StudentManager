@@ -74,7 +74,7 @@ Page({
 	 */
 	onLoad: function (options) {
 		console.log(app.globalData.personMsg)
-		that.setData({
+		this.setData({
 			personMsg: app.globalData.personMsg,
 			sName: app.globalData.personMsg.sName,
 			sNumber: app.globalData.personMsg.sNumber
