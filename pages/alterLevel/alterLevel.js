@@ -141,6 +141,25 @@ Page({
               icon: 'success',
               duration: 2000
             })
+            wx.request({ //获取数据库中个人信息
+							url: 'https://yangself.cn/collegeLife/login',
+							data: {
+								openid: app.globalData.openid
+							},
+							method: "GET",
+							success(res) { //已经获取到个人信息，在res.data中
+								console.log("将要返回") //如果获取到信息，将个人信息存放到app.globalData中
+								console.log(res.data)
+								app.globalData.personMsg = res.data
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
+						})
             setTimeout(function () {
               wx.navigateBack({
                 complete: (res) => {}
@@ -248,6 +267,25 @@ Page({
               icon: 'success',
               duration: 2000
             })
+            wx.request({ //获取数据库中个人信息
+							url: 'https://yangself.cn/collegeLife/login',
+							data: {
+								openid: app.globalData.openid
+							},
+							method: "GET",
+							success(res) { //已经获取到个人信息，在res.data中
+								console.log("将要返回") //如果获取到信息，将个人信息存放到app.globalData中
+								console.log(res.data)
+								app.globalData.personMsg = res.data
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
+						})
             setTimeout(function () {
               wx.navigateBack({
                 complete: (res) => {}
@@ -306,6 +344,25 @@ Page({
               icon: 'success',
               duration: 2000
             })
+            wx.request({ //获取数据库中个人信息
+							url: 'https://yangself.cn/collegeLife/login',
+							data: {
+								openid: app.globalData.openid
+							},
+							method: "GET",
+							success(res) { //已经获取到个人信息，在res.data中
+								console.log("将要返回") //如果获取到信息，将个人信息存放到app.globalData中
+								console.log(res.data)
+								app.globalData.personMsg = res.data
+							},
+							fail(res) {
+								wx.showToast({
+									title: '服务器连接失败！',
+									icon: 'none',
+									duration: 5000
+								})
+							}
+						})
             setTimeout(function () {
               wx.navigateBack({
                 complete: (res) => {}
