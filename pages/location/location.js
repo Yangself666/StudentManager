@@ -32,60 +32,53 @@ Page({
 				},
 				method: "GET",
 				success(res) {
-					if (!res.data) {
-						console.log(res)
-						wx.showToast({
-							title: '服务器错误！',
-							icon: 'none',
-							duration: 2000
-						})
-					} else {
-						wx.request({
-							url: 'http://yangself.cn/collegeLife/classLocation',
-							data: {
-								cid: res.data.cid,
-							},
-							method: "GET",
-							success(res) {
-								var markersArray = [];
-								console.warn(res)
-								for (let index = 0; index < res.data.length; index++) {
-									var font = res.data[index].updateTime.indexOf(".")
-									var time = res.data[index].updateTime.substring(0, font)
-									markersArray.push({
-										iconPath: "/images/icon/icon_gps.png",
-										id: index,
-										latitude: res.data[index].latitude,
-										longitude: res.data[index].longitude,
-										width: 30,
-										height: 30,
-										callout: {
-											content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName + "\n更新时间：" + time,
-											color: '#000000',
-											borderRadius: 15,
-											borderWidth: 1,
-											borderColor: '#ec5c5d',
-											bgColor: '#ffffff',
-											padding: 5,
-											textAlign: 'center'
-										}
-									})
-								}
-								console.log("数组为")
-								console.log(markersArray)
-								that.setData({
-									markers: markersArray
-								})
-							},
-							fail(res) {
-								wx.showToast({
-									title: '服务器连接失败！',
-									icon: 'none',
-									duration: 5000
+					console.log("查询cid为")
+					console.log(res.data)
+					wx.request({
+						url: 'http://yangself.cn/collegeLife/classLocation',
+						data: {
+							cid: res.data.cid,
+						},
+						method: "GET",
+						success(res) {
+							var markersArray = [];
+							console.warn(res)
+							for (let index = 0; index < res.data.length; index++) {
+								var font = res.data[index].updateTime.indexOf(".")
+								var time = res.data[index].updateTime.substring(0, font)
+								markersArray.push({
+									iconPath: "/images/icon/icon_gps.png",
+									id: index,
+									latitude: res.data[index].latitude,
+									longitude: res.data[index].longitude,
+									width: 30,
+									height: 30,
+									callout: {
+										content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName + "\n更新时间：" + time,
+										color: '#000000',
+										borderRadius: 15,
+										borderWidth: 1,
+										borderColor: '#ec5c5d',
+										bgColor: '#ffffff',
+										padding: 5,
+										textAlign: 'center'
+									}
 								})
 							}
-						})
-					}
+							console.log("数组为")
+							console.log(markersArray)
+							that.setData({
+								markers: markersArray
+							})
+						},
+						fail(res) {
+							wx.showToast({
+								title: '服务器连接失败！',
+								icon: 'none',
+								duration: 5000
+							})
+						}
+					})
 				},
 				fail(res) {
 					wx.showToast({
@@ -119,7 +112,7 @@ Page({
 							width: 30,
 							height: 30,
 							callout: {
-								content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName+ "\n更新时间：" + time,
+								content: res.data[index].sName + "\n" + res.data[index].sNumber + "\n" + res.data[index].cName + "\n更新时间：" + time,
 								color: '#000000',
 								borderRadius: 15,
 								borderWidth: 1,
